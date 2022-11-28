@@ -1,11 +1,21 @@
 import React from 'react';
-import Greetings from './Greetings';
+import { Route, Routes } from 'react-router-dom';
 
-const App: React.FC = () => {
+import Greetings from './Greetings';
+import TopMenu from './TopMenu';
+
+const App = (): JSX.Element => {
   const onClick = (name: string) => {
     console.log(`${name} says hello`);
   };
-  return <Greetings name="Hello" onClick={onClick} />;
+  return (
+    <Routes>
+      <Route path='/topmenu' element={
+        <TopMenu name="Hello" onClick={onClick} />
+      } />
+      <Route path='/' element={<Greetings name="Hello" onClick={onClick} />} />
+    </Routes>
+  );
 };
 
 export default App;
